@@ -7,7 +7,8 @@ import (
 	"fmt"
 	"sync"
 )
-//var mut sync.Mutex//pointer
+
+//var mut sync.Mutex //pointer
 
 func main() {
 	wg := new(sync.WaitGroup)
@@ -42,22 +43,13 @@ func main() {
 	fmt.Println("Your customer list is: ", CustomerList)
 
 	go allocate(table, waiting, CustomerList, wg)
-	go wait(table, waiting, CustomerList, wg, channel)
 	go leave(table, waiting, customer, CustomerList, wg)
+	go wait(table, waiting, CustomerList, wg)
+
 	wg.Wait()
 }
 
 // this function will leaves the customers
-func leave(table int, waiting int, customer int, CustomerList []string, wg *sync.WaitGroup) {
-	defer wg.Done()
-	//extra is total count who will be allocated the tables
-	extra := table + waiting + 1
-	for i := extra; i < customer+1; i++ {
-		fmt.Printf("%s leaves the restaurant. \n", CustomerList[i])
-		//time.Sleep(100 * time.Millisecond)
-	}
-
-}
 
 // this function will add customers in waiting
 func wait(table int, waiting int, CustomerList []string, wg *sync.WaitGroup) {
@@ -67,7 +59,9 @@ func wait(table int, waiting int, CustomerList []string, wg *sync.WaitGroup) {
 	//countwait is count for waiting
 	countwait := 1
 	for waiting > 0 {
+		//mut.Lock()
 		fmt.Printf("%s has been allocated waiting %d.\n", CustomerList[count], countwait)
+		//mut.Unlock()
 		//time.Sleep(100 * time.Millisecond)
 		waiting -= 1
 		count += 1
@@ -97,4 +91,15 @@ func allocate(table int, waiting int, CustomerList []string, wg *sync.WaitGroup)
 		Tablecount += 1
 		custm += 1
 	}
+}
+
+func leave(table int, waiting int, customer int, CustomerList []string, wg *sync.WaitGroup) {
+	defer wg.Done()
+	//extra is total count who will be allocated the tables
+	extra := table + waiting + 1
+	for i := extra; i < customer+1; i++ {
+		fmt.Printf("%s leaves the restaurant. \n", CustomerList[i])
+		//time.Sleep(100 * time.Millisecond)
+	}
+
 }
