@@ -1,0 +1,30 @@
+type Ninja {
+  name: String
+  rank: String
+  mainStyle: String
+  village: String
+  status: String
+  numberOfJutsus: Int
+}
+
+type Query {
+  findGenin(name: String!): Ninja
+  returnAllHokages: [Ninja]!
+}
+
+type Mutation {
+  registerNewNinja(input: NewNinja): ResponseMessage
+}
+
+input NewNinja {
+  name: String
+  rank: String
+  mainStyle: String
+  village: String
+  status: String
+  numberOfJutsus: Int
+}
+
+type ResponseMessage {
+  message: String!
+}
