@@ -26,6 +26,7 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 		log.Println(err)
 	}
 
+	log.Println("Todo created succesfully")
 	return (*model.Todo)(&Todo), nil
 }
 
@@ -44,6 +45,7 @@ func (r *mutationResolver) UpdateTodo(ctx context.Context, input model.NewTodo) 
 		log.Println(err)
 	}
 
+	log.Println("Todo updated succesfully")
 	return &Todo, nil
 }
 
@@ -62,6 +64,7 @@ func (r *mutationResolver) DeleteTodo(ctx context.Context, input model.ID) (*mod
 	}
 	defer rows.Close()
 
+	log.Println("Todo deleted succesfully")
 	return &Todo, nil
 }
 
@@ -88,6 +91,7 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 	}
 
 	// RETURN ALL THE TODOS
+	log.Println("Showing list of all todo's")
 	return r.todos, nil
 }
 
@@ -99,3 +103,4 @@ func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
 type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
+
