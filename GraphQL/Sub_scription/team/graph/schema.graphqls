@@ -1,0 +1,28 @@
+type User {
+  id: ID!
+  name: String!
+}
+
+type Team {
+  id: ID!
+  name: String!
+  members: [User!]!
+}
+
+type Query {
+  teams: [Team!]!
+}
+
+type Mutation {
+  addUserToTeam(teamID: ID!, name: String!): Team!
+}
+
+type Subscription {
+  userAdded(teamID: ID!): User!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

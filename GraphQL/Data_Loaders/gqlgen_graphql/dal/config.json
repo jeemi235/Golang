@@ -1,0 +1,12 @@
+{
+    "server":{
+        "port" : "5058"
+    },
+    "cockroach":{
+        "host" : "localhost",
+        "port" : "26257",
+        "user" : "max",
+        "pass":"roach",
+        "DbName" : "task"
+    }
+}

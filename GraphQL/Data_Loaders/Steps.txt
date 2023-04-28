@@ -1,0 +1,8 @@
+1. create directory named: gqlgen_graphql
+2. generate go.mod file using: go mod init {folder_name}
+3. generate code skeleton using: go run github.com/99designs/gqlgen init
+4. install required gqlgen dependencies using go get... command
+5. Add `//go:generate go run github.com/99designs/gqlgen generate` this command in resolver.go file 
+6. Run go generate ./...
+7. go get github.com/vektah/dataloaden
+8. go run github.com/vektah/dataloaden TodoLoader string *./models.Todo   

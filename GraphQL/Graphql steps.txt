@@ -1,0 +1,22 @@
+1. mkdir example & cd example
+
+2. go mod init example
+
+3. go get github.com/99designs/gqlgen 
+
+4. go run github.com/99designs/gqlgen init
+
+5. go mod tidy
+
+6. Do changes in the schema.graphqls
+
+7. go run github.com/99designs/gqlgen generate
+
+8. run this commands to get dependencies
+-go get github.com/99designs/gqlgen@v0.17.30
+-go get github.com/99designs/gqlgen/codegen@v0.17.30
+-go get github.com/99designs/gqlgen/internal/imports@v0.17.30
+
+Then again run go run github.com/99designs/gqlgen generate
+
+9. go run server.go
