@@ -1,0 +1,32 @@
+# GraphQL schema example
+#we need to predefine our queries and mutations here
+
+type Todo {
+  id: ID!
+  name:String!
+  user:ID!
+}
+
+type Query {
+  todos(id:ID!): [Todo!]!
+}
+
+type newid{
+  id:ID!
+}
+
+input NewTodo {
+ id:ID!
+ name:String!
+ user:ID!
+}
+
+input id{
+  id:ID!
+}
+
+type Mutation {
+  createTodo(input: NewTodo!): Todo!
+  updateTodo(input: NewTodo!): Todo!
+  deleteTodo(input: id!): newid!
+}

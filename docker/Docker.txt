@@ -1,0 +1,46 @@
+id   -> jeemi
+pass -> jims@2023
+
+
+Basic
+: docker version
+: docker -v
+: docker info
+: docker --help
+: docker login
+————————————
+Images
+: docker images
+: docker pull
+: docker rmi
+————————————
+Containers
+: docker ps
+: docker run
+: docker start
+: docker stop
+: docker attach name/id
+————————————
+System
+: docker stats
+: docker system df
+: docker system prune
+_____________
+compose
+: docker-compose config
+: docker-compose up -d
+: docker-compose down
+: docker-compose up -d --scale database=4
+______________
+volume
+: docker volume create myvol1
+: docker volume rm myvol1
+: docker volume prune
+: 
+
+
+
+
+
+
+

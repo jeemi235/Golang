@@ -1,0 +1,28 @@
+1. mkdir example & cd example
+
+2. go mod init example
+
+3.printf '// +build tools\npackage tools\nimport (_ "github.com/99designs/gqlgen"\n _ "github.com/99designs/gqlgen/graphql/introspection")' | gofmt > tools.go
+
+4.go mod tidy
+
+5.go mod vendor
+
+6. go get github.com/99designs/gqlgen 
+
+7. go run github.com/99designs/gqlgen init
+
+8. go mod tidy
+
+9. Do changes in the schema.graphqls
+
+10. go run github.com/99designs/gqlgen generate
+
+11. run this commands to get dependencies
+-go get github.com/99designs/gqlgen@v0.17.30
+-go get github.com/99designs/gqlgen/codegen@v0.17.30
+-go get github.com/99designs/gqlgen/internal/imports@v0.17.30
+
+Then again run go run github.com/99designs/gqlgen generate
+
+12. go run server.go
