@@ -14,17 +14,17 @@ func main() {
 		panic(err)
 	}
 
-    // Let's start by opening a channel to our RabbitMQ instance
-    // over the connection we have already established
+	// Let's start by opening a channel to our RabbitMQ instance
+	// over the connection we have already established
 	ch, err := conn.Channel()
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer ch.Close()
+	// defer ch.Close()
 
-    // with this channel open, we can then start to interact
-    // with the instance and declare Queues that we can publish and
-    // subscribe to
+	// with this channel open, we can then start to interact
+	// with the instance and declare Queues that we can publish and
+	// subscribe to
 	q, err := ch.QueueDeclare(
 		"TestQueue",
 		false,
@@ -33,16 +33,16 @@ func main() {
 		false,
 		nil,
 	)
-    // We can print out the status of our Queue here
-    // this will information like the amount of messages on
-    // the queue
+	// We can print out the status of our Queue here
+	// this will information like the amount of messages on
+	// the queue
 	fmt.Println(q)
-    // Handle any errors if we were unable to create the queue
+	// Handle any errors if we were unable to create the queue
 	if err != nil {
 		fmt.Println(err)
 	}
 
-    // attempt to publish a message to the queue!
+	// attempt to publish a message to the queue!
 	err = ch.Publish(
 		"",
 		"TestQueue",
@@ -57,5 +57,5 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-    fmt.Println("Successfully Published Message to Queue")
+	fmt.Println("Successfully Published Message to Queue")
 }
