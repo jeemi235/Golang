@@ -1,8 +1,0 @@
-RabbitMQ:
-
-1> rabbitmq-plugins.bat enable rabbitmq_management
-2> rabbitmq-service.bat stop 
-3> rabbitmq-service.bat install 
-4> rabbitmq-service.bat start
-5> http://localhost:15672/#/
-
